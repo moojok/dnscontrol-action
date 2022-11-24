@@ -33,7 +33,7 @@ jobs:
 
           # Optionally, if your DNSConfig files are in a non-default location,
           # you could specify the paths to the config and credentials file.
-          config_file: 'dns/dnsconfig.js'
+          config_file: "dns/dnsconfig.js"
 ```
 
 ### preview
@@ -63,8 +63,8 @@ jobs:
 
           # Optionally, if your DNSConfig files are in a non-default location,
           # you could specify the paths to the config and credentials file.
-          config_file: 'dns/dnscontrol.js'
-          creds_file: 'dns/creds.json'
+          config_file: "dns/dnscontrol.js"
+          creds_file: "dns/creds.json"
 ```
 
 This is the action you probably want to run for each branch so that proposed changes
@@ -97,7 +97,7 @@ Provided that your GitHub Action job for 'preview' has an id
 comments using Unsplash's [comment-on-pr](https://github.com/unsplash/comment-on-pr)
 GitHub Action.
 
-```yaml
+````yaml
 - name: Preview pull request comment
   uses: unsplash/comment-on-pr@v1.3.0
   env:
@@ -108,7 +108,7 @@ GitHub Action.
       ${{ steps.dnscontrol_preview.outputs.preview_comment }}
       ```
     check_for_duplicate_msg: true
-```
+````
 
 ### push
 
@@ -142,8 +142,8 @@ jobs:
 
           # Optionally, if your DNSConfig files are in a non-default location,
           # you could specify the paths to the config and credentials file.
-          config_file: 'dns/dnsconfig.js'
-          creds_file: 'dns/creds.json'
+          config_file: "dns/dnsconfig.js"
+          creds_file: "dns/creds.json"
 ```
 
 ## Credentials
@@ -161,7 +161,7 @@ and then define the `creds.json` file as follows.
 
 ```json
 {
-  "cloudflare":{
+  "cloudflare": {
     "TYPE": "CLOUDFLAREAPI",
     "apitoken": "$CLOUDFLARE_API_TOKEN"
   }
