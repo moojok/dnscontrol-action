@@ -1,4 +1,4 @@
-FROM alpine:3.17.0@sha256:8914eb54f968791faf6a8638949e480fef81e697984fba772b3976835194c6d4
+FROM alpine:3.17.3@sha256:124c7d2707904eea7431fffe91522a01e5a861a624ee31d03372cc1d138a3126
 
 LABEL repository="https://github.com/moojok/dnscontrol-action"
 LABEL maintainer="Little Human <hey@moojok.xyz>"
