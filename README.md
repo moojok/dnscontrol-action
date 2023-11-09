@@ -1,6 +1,6 @@
 # DNSControl Action
 
-![](https://github.com/koenrh/dnscontrol-action/workflows/build/badge.svg)
+![](https://github.com/moojok/dnscontrol-action/workflows/build/badge.svg)
 
 Deploy your DNS configuration using [GitHub Actions](https://github.com/actions)
 using [DNSControl](https://github.com/StackExchange/dnscontrol/).
@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: DNSControl check
-        uses: koenrh/dnscontrol-action@v3
+        uses: moojok/dnscontrol-action@main
         with:
           args: check
 
@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: DNSControl preview
-        uses: koenrh/dnscontrol-action@v3
+        uses: moojok/dnscontrol-action@main
         id: dnscontrol_preview
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -134,7 +134,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: DNSControl push
-        uses: koenrh/dnscontrol-action@v3
+        uses: moojok/dnscontrol-action@main
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         with:

@@ -5,18 +5,34 @@ set -o pipefail
 # Resolve to full paths
 CONFIG_ABS_PATH="$(readlink -f "${INPUT_CONFIG_FILE}")"
 CREDS_ABS_PATH="$(readlink -f "${INPUT_CREDS_FILE}")"
+ALLOW_FETCH="${ALLOW_FETCH:-false}"
+DISABLE_ORDERED_UPDATE="${DISABLE_ORDERED_UPDATE:-false}"
+ENABLE_COLORS="${ENABLE_COLORS:-false}"
 
 WORKING_DIR="$(dirname "${CONFIG_ABS_PATH}")"
 cd "$WORKING_DIR" || exit
+ARGS=()
 
-ARGS=(
+if [ "$ENABLE_COLORS" = false ]; then
+  ARGS+=(--no-colors)
+fi
+
+if [ "$DISABLE_ORDERED_UPDATE" = true ]; then
+  ARGS+=(--disableordering)
+fi
+
+if [ "$ALLOW_FETCH" = true ]; then
+  ARGS+=(--allow-fetch)
+fi
+
+ARGS+=(
   "$@"
-   --config "$CONFIG_ABS_PATH"
+  --config "$CONFIG_ABS_PATH"
 )
 
 # 'check' sub-command doesn't require credentials
 if [ "$1" != "check" ]; then
-    ARGS+=(--creds "$CREDS_ABS_PATH")
+  ARGS+=(--creds "$CREDS_ABS_PATH")
 fi
 
 IFS=
@@ -40,6 +56,6 @@ DELIMITER="DNSCONTROL-$RANDOM"
   echo "preview_comment<<$DELIMITER"
   echo "$FILTERED_OUTPUT"
   echo "$DELIMITER"
-} >> "$GITHUB_OUTPUT"
+} >>"$GITHUB_OUTPUT"
 
 exit $EXIT_CODE

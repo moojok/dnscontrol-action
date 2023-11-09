@@ -1,7 +1,7 @@
 ---
-name: DNSControl Action
+name: DNSControl Action with Fetch Functionality
 description: Deploy your DNS configuration to multiple providers
-author: Koen Rouwhorst <info@koenrouwhorst.nl>
+author: Little Human <hey@moojok.online>
 branding:
   icon: cloud
   color: yellow
@@ -17,9 +17,22 @@ inputs:
     description: Path to DNSControl credentials file.
     required: false
     default: 'creds.json'
+  enable_colors:
+    description: Enable colors in the output.
+    required: false
+    default: 'false'
+  allow_fetch:
+    description: Enable the fetch function.
+    required: false
+    default: 'false'
+  disable_ordered_update:
+    description: Disable the ordered update function.
+    required: false
+    default: 'false'
 outputs:
   output:
     description: The output of the dnscontrol command that was executed.
 runs:
   using: docker
   image: 'Dockerfile'
+  # image: 'docker://ghcr.io/moojok/dnscontrol-action:latest'
