@@ -1,4 +1,4 @@
-FROM stackexchange/dnscontrol:4.8.2@sha256:428ceefd47cd95e79fd92ac71e11917d180a94f10880c8dc5f405ac60078c845
+FROM stackexchange/dnscontrol:4.11.0@sha256:299fd102e066d9d97b2983d9e50490b3e6b90b46acfaa860450d081a938a62c7
 
 LABEL repository="https://github.com/moojok/dnscontrol-action"
 LABEL maintainer="Little Human <hey@moojok.online>"
